@@ -1,0 +1,88 @@
+set runtimepath+=~/.vim_runtime
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+execute pathogen#infect()
+
+try
+  source ~/.vim_runtime/my_configs.vim
+catch
+endtry
+
+syntax on
+set autoindent
+set ts=2
+set number
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set colorcolumn=80
+set relativenumber
+set showmatch
+set ignorecase
+set hlsearch
+set cursorline
+set smartcase
+set incsearch
+set ruler
+set scrolloff=2
+set laststatus=2
+set backspace=indent,eol,start
+set si
+set list listchars=tab:»·,trail:·
+se mouse+=a
+set foldlevel=1
+set autoread
+set autowrite
+set re=1
+
+set wrap
+set formatoptions-=t
+set textwidth=80
+
+"yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed
+
+  if has("unnamedplus")
+    set clipboard+=unnamedplus
+  endif
+endif
+
+" UI
+set background=dark
+set guioptions-=L
+colorscheme base16-onedark
+set termguicolors
+" Reindent whole file
+map <F7> mzgg=G`z
+
+let mapleader=','
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-2>l
+
+"key binding
+command! Q q
+command! Qall qall
+command! QA qall
+command! E e
+command! W w
+command! Wq wq
+
+"vim ruby
+let g:ruby_indent_access_modifier_style='normal'
+let g:ruby_indent_block_style = 'expression'
+let g:ruby_indent_assignment_style = 'variable'
+
+"auto close tag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx,*.js,*.html.erb"
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+endfunction
